@@ -9,6 +9,8 @@ nav {
   font-size: 15px;
   padding: 20px 60px;
   color: white;
+  border-bottom: 1px solid rgb(59, 59, 59);
+  z-index: 10;
 }
 
 .nav-column {
@@ -19,13 +21,13 @@ nav {
 /* 로고 깜빡임 */
 @keyframes logoPulse {
   0% {
-    color: white;
-  }
-  50% {
     color: rgb(21, 82, 249);
   }
-  100% {
+  50% {
     color: white;
+  }
+  100% {
+    color: rgb(21, 82, 249);
   }
 }
 
@@ -34,6 +36,7 @@ nav {
   font-family: "HakgyoansimDunggeunmisoTTF-B";
   font-size: 28px;
   cursor: pointer;
+  color: rgb(21, 82, 249);
 
   /* 호버시 로고 깜빡임 */
   &:hover {

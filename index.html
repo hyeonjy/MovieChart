@@ -4,17 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <nav>
       <div class="nav-column">
         <h1 id="logo">Wavvee</h1>
+
+        <!-- 메뉴 아이템 -->
         <ul class="items">
           <li class="item">Home</li>
           <li class="item">Favoriate</li>
         </ul>
       </div>
+
+      <!-- 검색 부분 -->
       <div class="nav-column search-wrap">
         <div class="search-icon">
           <i class="fa-solid fa-magnifying-glass"></i>
@@ -23,7 +31,14 @@
       </div>
     </nav>
 
-    <script src="./js/movie.js"></script>
+    <main class="section-container">
+      <section class="section-list slide1"></section>
+      <section class="section-list slide2"></section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script type="module" src="./js/movie.js"></script>
+    <!-- <script src="./js/slider.js"></script> -->
     <script src="./js/search.js"></script>
     <script
       src="https://kit.fontawesome.com/493cc16663.js"

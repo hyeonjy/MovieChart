@@ -1,5 +1,6 @@
 @import "reset.css";
 @import "header.css";
+@import "movie-section.css";
 
 @font-face {
   font-family: "HakgyoansimDunggeunmisoTTF-B";
@@ -7,6 +8,12 @@
     format("woff2");
   font-weight: 700;
   font-style: normal;
+}
+
+body {
+  height: 300vh;
+  background-color: #1b1b1b;
+  color: white;
 }
 
 .hidden {
