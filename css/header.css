@@ -1,0 +1,94 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: #1b1b1b;
+  font-size: 15px;
+  padding: 20px 60px;
+  color: white;
+}
+
+.nav-column {
+  display: flex;
+  align-items: center;
+}
+
+/* 로고 깜빡임 */
+@keyframes logoPulse {
+  0% {
+    color: white;
+  }
+  50% {
+    color: rgb(21, 82, 249);
+  }
+  100% {
+    color: white;
+  }
+}
+
+#logo {
+  margin-right: 50px;
+  font-family: "HakgyoansimDunggeunmisoTTF-B";
+  font-size: 28px;
+  cursor: pointer;
+
+  /* 호버시 로고 깜빡임 */
+  &:hover {
+    animation: logoPulse 1s infinite;
+  }
+}
+
+.items {
+  display: flex;
+  align-items: center;
+}
+
+.item {
+  margin-right: 25px;
+  color: white;
+  transition: color 0.1s ease-in-out;
+  cursor: pointer;
+  &:hover {
+    color: gray;
+  }
+}
+
+.search-wrap {
+  color: white;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+#search-input {
+  transform-origin: right center;
+  position: absolute;
+  left: -400px;
+
+  width: 0;
+  opacity: 0;
+  pointer-events: none;
+  background-color: #1b1b1b;
+  border-width: 0 0 1px;
+  border-color: white;
+}
+
+.search-icon {
+  transform-origin: right center;
+  position: absolute;
+  left: -140px;
+  cursor: pointer;
+  margin-right: 8px;
+  i {
+    color: white;
+  }
+}
+
+.search-wrap.active #search-input {
+  width: 250px;
+  opacity: 1;
+  pointer-events: auto;
+}
