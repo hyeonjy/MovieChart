@@ -20,11 +20,11 @@ export function initializeSwipers() {
         nextEl: config.next,
         prevEl: config.prev,
       },
-      autoplay: {
-        // 자동 슬라이드 설정
-        delay: 3000,
-        disableOnInteraction: false,
-      },
+      // autoplay: {
+      //   // 자동 슬라이드 설정
+      //   delay: 3000,
+      //   disableOnInteraction: false,
+      // },
       loop: true,
       breakpoints: {
         500: {

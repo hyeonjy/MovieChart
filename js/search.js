@@ -4,6 +4,7 @@ const searchInput = document.getElementById("search-input");
 
 let isSearchOpen = false;
 
+//검색 아이콘 클릭시 input이 보이도록
 searchIcon.addEventListener("click", () => {
   isSearchOpen = !isSearchOpen;
   searchContainer.classList.toggle("active");

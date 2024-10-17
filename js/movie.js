@@ -12,11 +12,14 @@ const options = {
   },
 };
 
+export let moviesData = [];
+
 async function fetchMovies(url) {
   try {
     const response = await fetch(url, options);
     const data = await response.json();
     console.log(data.results);
+    moviesData = [...moviesData, ...data.results];
     return data.results;
   } catch (error) {
     console.error(`Error fetching movies from ${url}: `, error);
@@ -28,7 +31,9 @@ function renderMovies(movies, title, index) {
   const swiperWrapperContent = movies
     .map(
       (movie) =>
-        `<div class="swiper-slide"><img class="movie-poster" src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" /></div>`
+        `<div class="swiper-slide" key="${movie.id}" data-movie-id="${movie.id}">
+          <img class="movie-poster" src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" />
+        </div>`
     )
     .join("");
 
@@ -54,28 +59,24 @@ function initializeSwiper(index) {
     prev: `#prev${index}`,
   };
 
-  new Swiper(config.container, {
+  const swiper = new Swiper(config.container, {
     slidesPerView: 1,
     spaceBetween: 100,
     navigation: {
       nextEl: config.next,
       prevEl: config.prev,
     },
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
-    },
+    // autoplay: {
+    //   delay: 3000,
+    //   disableOnInteraction: false,
+    // },
     loop: true,
+    loopAdditionalSlides: 0,
     breakpoints: {
-      500: {
+      600: {
         slidesPerView: 2,
-        spaceBetween: 50,
+        spaceBetween: 100,
         slidesPerGroup: 2,
-      },
-      800: {
-        slidesPerView: 3,
-        spaceBetween: 20,
-        slidesPerGroup: 3,
       },
       1024: {
         slidesPerView: 4,

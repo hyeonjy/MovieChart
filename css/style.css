@@ -1,4 +1,5 @@
 @import "reset.css";
+@import "modal.css";
 @import "header.css";
 @import "movie-section.css";
 
@@ -11,9 +12,11 @@
 }
 
 body {
-  height: 300vh;
+  /* height: 300vh; */
   background-color: #1b1b1b;
   color: white;
+  width: 100%;
+  height: 100%;
 }
 
 .hidden {
