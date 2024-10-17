@@ -1,16 +1,30 @@
 import { moviesData } from "./movie.js";
+import { searchData } from "./search.js";
 const sectionLists = document.querySelectorAll(`.section-list`);
 
 sectionLists.forEach((sectionList) => {
   sectionList.addEventListener("click", (event) => {
-    //영화 포스터를 누르면
+    console.log("clicked!");
+    //메인화면 - 영화포스터 클릭시
     if (event.target.classList.contains("movie-poster")) {
-      console.log("click!");
+      console.log("click1!");
       const slide = event.target.closest(".swiper-slide");
 
       // 해당 영화의 아이디값을 가져와서 일치하는 데이터를 get
       const movieId = slide.getAttribute("data-movie-id");
       const selectedMovie = moviesData.find((movie) => movie.id == movieId);
+
+      //모달을 보여줌
+      showModal(selectedMovie);
+    }
+    // 검색화면 - 영화목록 클릭시
+    else if (event.target.classList.contains("search-item")) {
+      console.log("click2!");
+      const itemWrap = event.target.closest(".search-item-wrap");
+
+      // 해당 영화의 아이디값을 가져와서 일치하는 데이터를 get
+      const movieId = itemWrap.getAttribute("data-movie-id");
+      const selectedMovie = searchData.find((movie) => movie.id == movieId);
 
       //모달을 보여줌
       showModal(selectedMovie);

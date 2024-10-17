@@ -1,0 +1,63 @@
+.search-list {
+  position: relative;
+  top: -450px;
+  /* background-color: orange; */
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px 20px;
+  padding: 30px;
+}
+
+.search-item-wrap {
+  flex: 1 0 calc(20% - 20px); /* 5개 아이템 */
+  max-width: calc(20% - 20px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: white;
+  color: black;
+  font-weight: 700;
+  height: 450px;
+}
+
+.search-img {
+  width: 100%;
+  height: 400px;
+}
+
+.search-item-wrap h1 {
+  font-size: 1rem;
+  text-align: center;
+  padding: 10px;
+}
+
+/* 반응형  */
+@media (max-width: 1370px) {
+  .search-item-wrap {
+    flex: 1 0 calc(25% - 20px); /* 4개 아이템  */
+    max-width: calc(25% - 20px);
+  }
+}
+
+@media (max-width: 1180px) {
+  .search-item-wrap {
+    flex: 1 0 calc(33.33% - 20px); /* 3개 아이템 */
+    max-width: calc(33.33% - 20px);
+  }
+}
+
+@media (max-width: 880px) {
+  .search-item-wrap {
+    flex: 1 0 calc(50% - 20px); /* 2개 아이템 */
+    max-width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 560px) {
+  .search-item-wrap {
+    flex: 1 0 100%; /* 1개 아이템  */
+    max-width: 100%;
+  }
+}

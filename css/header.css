@@ -66,32 +66,46 @@ nav {
   position: relative;
 }
 
-#search-input {
-  transform-origin: right center;
-  position: absolute;
-  left: -400px;
+.search-form {
+  background-color: tomato;
+}
 
-  width: 0;
-  opacity: 0;
-  pointer-events: none;
-  background-color: #1b1b1b;
+#search-input {
+  /* transform-origin: right center; */
+  position: absolute;
+  left: -350px;
+  width: 200px;
+  top: -5px;
+
   border-width: 0 0 1px;
   border-color: white;
+  color: white;
+  background-color: #1b1b1b;
+}
+
+#search-input:focus {
+  outline: none;
+  border: none;
+  border-bottom: 2px solid white;
 }
 
 .search-icon {
+  background-color: #1b1b1b;
+  border: none;
   transform-origin: right center;
   position: absolute;
   left: -140px;
+  top: -7px;
   cursor: pointer;
   margin-right: 8px;
   i {
+    font-size: 20px;
     color: white;
   }
 }
 
-.search-wrap.active #search-input {
+/* .search-wrap.active #search-input {
   width: 250px;
   opacity: 1;
   pointer-events: auto;
-}
+} */

@@ -17,29 +17,33 @@
 
         <!-- 메뉴 아이템 -->
         <ul class="items">
-          <li class="item">Home</li>
+          <li class="item item-home">Home</li>
           <li class="item">Favoriate</li>
         </ul>
       </div>
 
       <!-- 검색 부분 -->
       <div class="nav-column search-wrap">
-        <div class="search-icon">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </div>
-        <input id="search-input" placeholder="영화를 검색하세요" />
+        <form class="search-form">
+          <input id="search-input" placeholder="영화를 검색하세요" />
+          <button type="submit" class="search-icon">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </form>
       </div>
     </nav>
 
     <main class="section-container">
       <section class="section-list slide1"></section>
       <section class="section-list slide2"></section>
+
+      <section class="section-list search-list"></section>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script type="module" src="./js/movie.js"></script>
     <script type="module" src="./js/slider.js"></script>
-    <script src="./js/search.js"></script>
+    <script type="module" src="./js/search.js"></script>
     <script type="module" src="./js/modal.js"></script>
     <script
       src="https://kit.fontawesome.com/493cc16663.js"

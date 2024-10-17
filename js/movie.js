@@ -1,10 +1,13 @@
 import config from "./apikey.js";
 
-const BASE_PATH = "https://api.themoviedb.org/3";
+export const BASE_PATH = "https://api.themoviedb.org/3";
 
 const AUTHORIZATION = config.Authorization;
+const API_KEY = config.Apikey;
+const logo = document.getElementById("logo");
+const home = document.querySelector(".item-home");
 
-const options = {
+export const options = {
   method: "GET",
   headers: {
     accept: "application/json",
@@ -18,7 +21,7 @@ async function fetchMovies(url) {
   try {
     const response = await fetch(url, options);
     const data = await response.json();
-    console.log(data.results);
+    // console.log(data.results);
     moviesData = [...moviesData, ...data.results];
     return data.results;
   } catch (error) {
@@ -93,13 +96,29 @@ function initializeSwiper(index) {
 }
 
 async function displayMovies() {
-  const popularMoviesUrl = `${BASE_PATH}/movie/popular?language=ko&page=1&region=KR`;
+  const popularMoviesUrl = `${BASE_PATH}/movie/popular?language=ko&region=KR`;
   const popularMovies = await fetchMovies(popularMoviesUrl);
   renderMovies(popularMovies, "인기있는 영화 순위", 1);
 
-  const topRatedMoviesUrl = `${BASE_PATH}/movie/top_rated?language=ko&page=1&region=KR`;
+  const topRatedMoviesUrl = `${BASE_PATH}/movie/top_rated?language=ko&region=KR`;
   const topRatedMovies = await fetchMovies(topRatedMoviesUrl);
   renderMovies(topRatedMovies, "찬사를 받은 영화", 2);
 }
 
 displayMovies();
+
+// 로고나 홈 메뉴 클릭 시
+logo.addEventListener("click", () => {
+  // 기존 화면 지우기
+  const searchList = document.querySelector(".search-list");
+  searchList.innerHTML = "";
+
+  displayMovies();
+});
+home.addEventListener("click", () => {
+  // 기존 화면 지우기
+  const searchList = document.querySelector(".search-list");
+  searchList.innerHTML = "";
+
+  displayMovies();
+});
