@@ -25,7 +25,9 @@ function renderSearch(movies, input) {
   // 기존 화면 지우기
   const sectionLists = document.querySelectorAll(".section-list");
   const searchList = document.querySelector(".search-list");
+  const frame = document.querySelector(".video-frame");
 
+  frame.innerHTML = "";
   sectionLists.forEach((sectionList) => {
     sectionList.innerHTML = "";
   });

@@ -4,6 +4,7 @@ export const BASE_PATH = "https://api.themoviedb.org/3";
 
 const AUTHORIZATION = config.Authorization;
 const API_KEY = config.Apikey;
+const DEFAULT_KEY = config.DefaultKey;
 const logo = document.getElementById("logo");
 const home = document.querySelector(".item-home");
 
@@ -103,6 +104,10 @@ async function displayMovies() {
   const topRatedMoviesUrl = `${BASE_PATH}/movie/top_rated?language=ko&region=KR`;
   const topRatedMovies = await fetchMovies(topRatedMoviesUrl);
   renderMovies(topRatedMovies, "찬사를 받은 영화", 2);
+
+  const id = moviesData[Math.ceil(Math.random() * (moviesData.length - 1))].id;
+  const videoData = await getVideos(id);
+  showBanner(videoData);
 }
 
 displayMovies();
@@ -122,3 +127,29 @@ home.addEventListener("click", () => {
 
   displayMovies();
 });
+
+const getVideos = async (id) => {
+  const data = await (
+    await fetch(
+      `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}&language=ko-KR`
+    )
+  ).json();
+
+  return data.results;
+};
+
+async function showBanner(data) {
+  console.log("data: ", data);
+  let key = data.length === 0 ? DEFAULT_KEY : data[0].key;
+  // console.log("key: ", key);
+  const frame = document.querySelector(".video-frame");
+  const videoHtml = `<iframe
+        width="100%"
+        height="830px"
+        src="https://www.youtube.com/embed/${key}?autoplay=1&muto=0&loop=1&modestbranding=1&playlist=${key}&controls=0&enablejsapi=1"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>`;
+  frame.innerHTML = videoHtml;
+}

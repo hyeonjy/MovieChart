@@ -1,6 +1,8 @@
 .section-container {
   position: relative;
-  top: 500px;
+  top: -180px;
+  background-color: #1b1b1b;
+  padding-top: 50px;
 }
 
 .section-list {
