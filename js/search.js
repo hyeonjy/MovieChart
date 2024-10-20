@@ -49,6 +49,7 @@ function renderSearch(movies, input) {
 // 검색어 입력시
 form.addEventListener("submit", function (event) {
   event.preventDefault();
+  window.scrollTo(0, 0);
 
   console.log(searchInput.value);
   searchMovies(searchInput.value);
