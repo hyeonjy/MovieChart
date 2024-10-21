@@ -7,7 +7,17 @@ const modal = document.querySelector(".modal-wrap");
 
 sectionLists.addEventListener("click", (event) => {
   if (event.target === event.currentTarget) return; // 부모 요소인 경우 취소
-  if (event.target.classList.contains("swiper-button-next")) return; //슬라이더 화살표의 경우 취소
+
+  const targetClass = event.target.classList;
+  if (
+    targetClass.contains("swiper-button-next") ||
+    targetClass.contains("swiper-wrapper") ||
+    targetClass.contains("section-title") ||
+    targetClass.contains("section-list") ||
+    targetClass.contains("swiper")
+  ) {
+    return;
+  }
 
   let targetElement = null;
 
