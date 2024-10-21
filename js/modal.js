@@ -1,5 +1,5 @@
-import { moviesData } from "./movie.js";
-import { searchData } from "./search.js";
+import { handleHeartBoxClick } from "./favoriate.js";
+import { BASE_PATH, options } from "./movie.js";
 
 const sectionLists = document.querySelector(`.section-container`);
 const modalOverlay = document.querySelector(".modal-overlay");
@@ -9,30 +9,36 @@ sectionLists.addEventListener("click", (event) => {
   if (event.target === event.currentTarget) return; // 부모 요소인 경우 취소
 
   let targetElement = null;
-  let dataList = null;
 
   //1. 메인화면 - 영화포스터 클릭시
   if (event.target.classList.contains("movie-poster")) {
-    console.log("click1!");
     targetElement = event.target.closest(".swiper-slide");
-    dataList = moviesData;
   }
-  // 2. 검색화면 - 영화목록 클릭시
-  else if (event.target.classList.contains("search-item")) {
-    console.log("click2!");
+  // 2. 검색화면, 좋아요 - 영화목록 클릭시
+  else if (
+    event.target.classList.contains("search-item") ||
+    event.target.classList.contains("favoriate-item")
+  ) {
     targetElement = event.target.closest(".search-item-wrap");
-    dataList = searchData;
   }
 
-  // 해당 영화의 아이디값을 가져와서 일치하는 데이터를 가져옴
+  // 해당 영화의 아이디값을 가져오기
   const movieId = targetElement.getAttribute("data-movie-id");
-  const selectedMovie = dataList.find((movie) => movie.id == movieId);
 
-  showModal(selectedMovie);
+  if (event.target.classList.contains("favoriate-item")) {
+    showModal(movieId, "favoriate-page");
+  } else {
+    showModal(movieId);
+  }
 });
 
 // 모달 생성
-function showModal(movie) {
+async function showModal(movieId, page = "") {
+  const savedFavoriateId = JSON.parse(localStorage.getItem("favoriateId"));
+  const movie = await (
+    await fetch(`${BASE_PATH}/movie/${movieId}?language=ko`, options)
+  ).json();
+
   const modalHtml = `
       <div class="modal-header">
         <div class="close-btn"><i class="fa-solid fa-x"></i></div>
@@ -42,9 +48,13 @@ function showModal(movie) {
           alt="${movie.title}"
         />
         <h2 class="modal-title">${movie.title}</h2>
-        <div class="heart-box">
-          <i class="fa-solid fa-heart heart-icon"></i>
-          <span>찜하기</span>
+        <div class="heart-box ${
+          savedFavoriateId && savedFavoriateId.includes(movie.id)
+            ? "full-heart"
+            : ""
+        } ${page}">
+          <i class="fa-solid fa-heart heart-icon ${page}"></i>
+          <span class="${page}">찜하기</span>
         </div>
       </div>
       <div class="modal-detail">
@@ -66,6 +76,10 @@ function showModal(movie) {
   // 닫힌 버튼을 누르면 모달끄기
   const closeButton = document.querySelector(".close-btn");
   closeButton.addEventListener("click", closeModal);
+
+  // 하트 박스 클릭 이벤트 핸들러
+  const heartBox = document.querySelector(".heart-box");
+  handleHeartBoxClick(movie, heartBox);
 }
 
 // 모달 닫기

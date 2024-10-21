@@ -17,11 +17,11 @@ async function searchMovies(input) {
   ).json();
 
   searchData = [...data.results];
-  renderSearch(data.results, input);
+  renderList(data.results, "search-item");
 }
 
 // 검색관련 영화목록
-function renderSearch(movies, input) {
+export function renderList(movies, type) {
   // 기존 화면 지우기
   const sectionLists = document.querySelectorAll(".section-list");
   const searchList = document.querySelector(".search-list");
@@ -37,8 +37,8 @@ function renderSearch(movies, input) {
     .map(
       (movie) =>
         `<div class="search-item-wrap" key="${movie.id}" data-movie-id="${movie.id}">
-          <img class="search-img search-item" src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" />
-          <h1 class="search-item">${movie.title}</h1>
+          <img class="search-img ${type}" src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" />
+          <h1 class="${type}">${movie.title}</h1>
         </div>`
     )
     .join("");

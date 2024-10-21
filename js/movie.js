@@ -24,6 +24,7 @@ async function fetchMovies(url) {
     const data = await response.json();
     // console.log(data.results);
     moviesData = [...moviesData, ...data.results];
+
     return data.results;
   } catch (error) {
     console.error(`Error fetching movies from ${url}: `, error);
@@ -146,7 +147,7 @@ async function showBanner(data) {
   const videoHtml = `<iframe
         width="100%"
         height="830px"
-        src="https://www.youtube.com/embed/${key}?autoplay=1&muto=0&loop=1&modestbranding=1&playlist=${key}&controls=0&enablejsapi=1"
+        src="https://www.youtube.com/embed/${key}?autoplay=0&muto=1&loop=1&modestbranding=1&playlist=${key}&controls=0&enablejsapi=1"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen

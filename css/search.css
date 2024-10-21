@@ -1,10 +1,9 @@
 .search-list {
   position: relative;
   top: 200px;
-  /* background-color: orange; */
 
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   flex-wrap: wrap;
   gap: 50px 20px;
   padding: 30px;

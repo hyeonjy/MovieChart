@@ -19,6 +19,7 @@
   z-index: 20;
   display: none;
   width: 40vw;
+  min-width: 500px;
   max-width: 700px;
   overflow-y: auto;
   margin-top: 5%;
@@ -51,7 +52,9 @@
   right: 30px;
   display: flex;
   align-items: center;
-  height: 50px;
+  /* height: 50px; */
+
+  cursor: pointer;
 }
 
 .heart-box span {
@@ -61,6 +64,11 @@
 .heart-icon {
   font-size: 40px;
   margin-right: 10px;
+  transition: color 0.3s ease;
+}
+
+.full-heart .heart-icon {
+  color: tomato;
 }
 
 .modal-detail {

@@ -59,6 +59,12 @@ nav {
   }
 }
 
+.item-home,
+.item-favoriate {
+  background-color: green;
+  cursor: pointer;
+}
+
 .search-wrap {
   color: white;
   display: flex;
