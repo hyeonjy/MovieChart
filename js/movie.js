@@ -100,11 +100,11 @@ function initializeSwiper(index) {
 async function displayMovies() {
   const popularMoviesUrl = `${BASE_PATH}/movie/popular?language=ko&region=KR`;
   const popularMovies = await fetchMovies(popularMoviesUrl);
-  renderMovies(popularMovies, "인기있는 영화 순위", 1);
+  renderMovies(popularMovies, "인기있는 영화", 1);
 
-  const topRatedMoviesUrl = `${BASE_PATH}/movie/top_rated?language=ko&region=KR`;
-  const topRatedMovies = await fetchMovies(topRatedMoviesUrl);
-  renderMovies(topRatedMovies, "찬사를 받은 영화", 2);
+  const nowPlayingUrl = `${BASE_PATH}/movie/now_playing?language=ko`;
+  const nowPlaying = await fetchMovies(nowPlayingUrl);
+  renderMovies(nowPlaying, "지금 볼 수 있는 영화", 2);
 
   const id = moviesData[Math.ceil(Math.random() * (moviesData.length - 1))].id;
   const videoData = await getVideos(id);
@@ -129,7 +129,7 @@ home.addEventListener("click", () => {
   displayMovies();
 });
 
-const getVideos = async (id) => {
+export const getVideos = async (id) => {
   const data = await (
     await fetch(
       `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}&language=ko-KR`
@@ -147,10 +147,10 @@ async function showBanner(data) {
   const videoHtml = `<iframe
         width="100%"
         height="830px"
+        title="YouTube video player"
         src="https://www.youtube.com/embed/${key}?autoplay=0&muto=1&loop=1&modestbranding=1&playlist=${key}&controls=0&enablejsapi=1"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
       ></iframe>`;
   frame.innerHTML = videoHtml;
 }
