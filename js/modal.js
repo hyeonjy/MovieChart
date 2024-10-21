@@ -77,6 +77,9 @@ async function showModal(movieId, page = "") {
   modalOverlay.style.display = "block";
   modal.style.display = "block";
 
+  // 모달 외부화면 스크롤 방지
+  document.body.classList.add("no-scroll");
+
   // 닫힌 버튼을 누르면 모달끄기
   const closeButton = document.querySelector(".close-btn");
   closeButton.addEventListener("click", closeModal);
@@ -91,6 +94,8 @@ function closeModal() {
   modal.innerHTML = "";
   modalOverlay.style.display = "none";
   modal.style.display = "none";
+
+  document.body.classList.remove("no-scroll");
 }
 
 // 외부요소 클릭 시 모달 닫기
