@@ -140,7 +140,7 @@ const getVideos = async (id) => {
 };
 
 async function showBanner(data) {
-  console.log("data: ", data);
+  // console.log("data: ", data);
   let key = data.length === 0 ? DEFAULT_KEY : data[0].key;
   // console.log("key: ", key);
   const frame = document.querySelector(".video-frame");

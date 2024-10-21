@@ -32,16 +32,25 @@ export function renderList(movies, type) {
     sectionList.innerHTML = "";
   });
 
-  // 검색 화면 목록 나오도록
-  const searchContent = movies
-    .map(
-      (movie) =>
-        `<div class="search-item-wrap" key="${movie.id}" data-movie-id="${movie.id}">
+  let searchContent = "";
+
+  // 영화 목록 나오도록
+  // 영화 데이터가 없으면
+  if (!movies.length) {
+    searchContent = `<div class="empty-item"><span>목록이 존재하지 않습니다.</span></div>`;
+  }
+  // 영화 데이터가 있으면
+  else {
+    searchContent = movies
+      .map(
+        (movie) =>
+          `<div class="search-item-wrap" key="${movie.id}" data-movie-id="${movie.id}">
           <img class="search-img ${type}" src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" />
           <h1 class="${type}">${movie.title}</h1>
         </div>`
-    )
-    .join("");
+      )
+      .join("");
+  }
 
   searchList.innerHTML = searchContent;
 }

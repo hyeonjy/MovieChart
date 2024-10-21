@@ -9,6 +9,13 @@
   padding: 30px;
 }
 
+.empty-item {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-size: 20px;
+}
+
 .search-item-wrap {
   flex: 1 0 calc(20% - 20px); /* 5개 아이템 */
   max-width: calc(20% - 20px);
