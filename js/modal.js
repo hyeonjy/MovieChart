@@ -19,23 +19,19 @@ sectionLists.addEventListener("click", (event) => {
     return;
   }
 
-  let targetElement = null;
-
-  //1. 메인화면 - 영화포스터 클릭시
-  if (event.target.classList.contains("movie-poster")) {
-    targetElement = event.target.closest(".swiper-slide");
-  }
-  // 2. 검색화면, 좋아요 - 영화목록 클릭시
-  else if (
-    event.target.classList.contains("search-item") ||
-    event.target.classList.contains("favoriate-item")
-  ) {
-    targetElement = event.target.closest(".search-item-wrap");
-  }
-
   // 해당 영화의 아이디값을 가져오기
-  const movieId = targetElement.getAttribute("data-movie-id");
+  let movieId = null;
+  // 타켓클래스에 메인화면 포스터, 검색 목록, 좋아요 목록이 있다면, 아이디 가져오기
+  if (
+    targetClass.contains("movie-poster") ||
+    targetClass.contains("search-item") ||
+    targetClass.contains("favoriate-item")
+  ) {
+    const parentElement = event.target.closest("[data-movie-id]");
+    movieId = parentElement.getAttribute("data-movie-id");
+  }
 
+  // 모달 띄우기
   if (event.target.classList.contains("favoriate-item")) {
     showModal(movieId, "favoriate-page");
   } else {
