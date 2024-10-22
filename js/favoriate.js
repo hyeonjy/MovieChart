@@ -30,5 +30,7 @@ export function handleHeartBoxClick(movie, heartBox) {
 
 // favoriate 메뉴 클릭 시
 favoriateItem.addEventListener("click", () => {
+  const inputContent = document.getElementById("search-input");
+  inputContent.value = "";
   renderList(favoriateData, "favoriate-item");
 });

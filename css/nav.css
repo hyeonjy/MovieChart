@@ -92,6 +92,7 @@ nav {
   outline: none;
   border: none;
   border-bottom: 2px solid white;
+  background-color: #1b1b1b;
 }
 
 .search-icon {

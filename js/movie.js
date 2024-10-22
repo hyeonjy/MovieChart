@@ -59,7 +59,7 @@ function renderMovies(movies, title, index) {
 async function displayMovies() {
   const popularMoviesUrl = `${BASE_PATH}/movie/popular?language=ko&region=KR`;
   const popularMovies = await fetchMovies(popularMoviesUrl);
-  renderMovies(popularMovies, "인기있는 영화", 1);
+  renderMovies(popularMovies, "실시간 인기 콘텐츠", 1);
 
   const nowPlayingUrl = `${BASE_PATH}/movie/now_playing?language=ko`;
   const nowPlaying = await fetchMovies(nowPlayingUrl);
@@ -76,14 +76,18 @@ displayMovies();
 logo.addEventListener("click", () => {
   // 기존 화면 지우기
   const searchList = document.querySelector(".search-list");
+  const inputContent = document.getElementById("search-input");
   searchList.innerHTML = "";
+  inputContent.value = "";
 
   displayMovies();
 });
 home.addEventListener("click", () => {
   // 기존 화면 지우기
   const searchList = document.querySelector(".search-list");
+  const inputContent = document.getElementById("search-input");
   searchList.innerHTML = "";
+  inputContent.value = "";
 
   displayMovies();
 });
