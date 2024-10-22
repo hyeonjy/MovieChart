@@ -21,9 +21,7 @@ export let moviesData = [];
 
 async function fetchMovies(url) {
   try {
-    const response = await fetch(url, options);
-    const data = await response.json();
-    // console.log(data.results);
+    const data = await (await fetch(url, options)).json();
     moviesData = [...moviesData, ...data.results];
 
     return data.results;
@@ -93,7 +91,7 @@ home.addEventListener("click", () => {
 export const getVideos = async (id) => {
   const data = await (
     await fetch(
-      `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}&language=ko-KR`
+      `${BASE_PATH}/movie/${id}/videos?api_key=${API_KEY}&language=ko-KR`
     )
   ).json();
 
@@ -101,9 +99,8 @@ export const getVideos = async (id) => {
 };
 
 async function showBanner(data) {
-  // console.log("data: ", data);
   let key = data.length === 0 ? DEFAULT_KEY : data[0].key;
-  // console.log("key: ", key);
+
   const frame = document.querySelector(".video-frame");
   const videoHtml = `<iframe
         width="100%"

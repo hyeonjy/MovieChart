@@ -1,7 +1,5 @@
 import { BASE_PATH, options } from "./movie.js";
 
-const searchContainer = document.querySelector(".search-wrap");
-const searchIcon = document.querySelector(".search-icon");
 const searchInput = document.getElementById("search-input");
 const form = document.querySelector(".search-form");
 
@@ -60,6 +58,5 @@ form.addEventListener("submit", function (event) {
   event.preventDefault();
   window.scrollTo(0, 0);
 
-  console.log(searchInput.value);
   searchMovies(searchInput.value);
 });
