@@ -26,11 +26,20 @@
   color: black;
   font-weight: 700;
   height: 450px;
+
+  cursor: pointer;
+  filter: brightness(1);
+  transition: 0.5s;
+  &:hover {
+    transform: scale(1.1);
+    filter: brightness(0.5);
+    z-index: 5;
+  }
 }
 
 .search-img {
   width: 100%;
-  height: 400px;
+  height: 90%;
 }
 
 .search-item-wrap h1 {
