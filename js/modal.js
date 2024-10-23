@@ -20,16 +20,8 @@ sectionLists.addEventListener("click", (event) => {
   }
 
   // 해당 영화의 아이디값을 가져오기
-  let movieId = null;
-  // 타켓클래스에 메인화면 포스터, 검색 목록, 좋아요 목록이 있다면, 아이디 가져오기
-  if (
-    targetClass.contains("movie-poster") ||
-    targetClass.contains("search-item") ||
-    targetClass.contains("favoriate-item")
-  ) {
-    const parentElement = event.target.closest("[data-movie-id]");
-    movieId = parentElement.getAttribute("data-movie-id");
-  }
+  const parentElement = event.target.closest("[data-movie-id]");
+  let movieId = parentElement.getAttribute("data-movie-id");
 
   // 모달 띄우기
   if (event.target.classList.contains("favoriate-item")) {
