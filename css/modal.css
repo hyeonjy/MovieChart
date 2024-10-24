@@ -64,7 +64,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* background-color: tomato; */
   height: 200px;
   width: 60%;
 }
@@ -85,8 +84,6 @@
   flex-direction: column;
   align-items: flex-end;
   height: 200px;
-
-  /* background-color: blue; */
 }
 
 .modal-info > span {
@@ -101,8 +98,6 @@
   justify-content: flex-end;
   align-items: center;
   height: 50px;
-  /* background-color: orange; */
-
   cursor: pointer;
   margin-bottom: 20px;
 }

@@ -76,7 +76,6 @@ nav {
 }
 
 #search-input {
-  /* transform-origin: right center; */
   position: absolute;
   left: -350px;
   width: 200px;
@@ -109,9 +108,3 @@ nav {
     color: white;
   }
 }
-
-/* .search-wrap.active #search-input {
-  width: 250px;
-  opacity: 1;
-  pointer-events: auto;
-} */
