@@ -32,6 +32,8 @@ async function fetchMovies(url) {
 
 function renderMovies(movies, title, index) {
   const sectionList = document.querySelector(`.slide${index}`);
+
+  // 슬라이더로 영화 목록 구현
   const swiperWrapperContent = movies
     .map(
       (movie) =>
