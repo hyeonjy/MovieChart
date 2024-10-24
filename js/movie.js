@@ -1,11 +1,7 @@
-import config from "./apikey.js";
 import { initializeSwiper } from "./slider.js";
 
 export const BASE_PATH = "https://api.themoviedb.org/3";
-
-const AUTHORIZATION = config.Authorization;
-const API_KEY = config.Apikey;
-const DEFAULT_KEY = config.DefaultKey;
+const DEFAULT_KEY = "uOypbs4yYkM";
 const logo = document.getElementById("logo");
 const home = document.querySelector(".item-home");
 
@@ -13,7 +9,8 @@ export const options = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization: AUTHORIZATION,
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjYWJkN2RiZjg4MTg1ODQ1MmFjNWIxOTdkNDJhMWY2ZCIsIm5iZiI6MTcyODk4Njk4OS4wNDUxNDMsInN1YiI6IjY0YzBmYTE3MTNhMzIwMDBjNTMyYzFlMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.YOptoEV5QyLoQkaU8aOhCKuMxkSex7kSng64ZGK5XAU",
   },
 };
 
@@ -96,9 +93,7 @@ home.addEventListener("click", () => {
 
 export const getVideos = async (id) => {
   const data = await (
-    await fetch(
-      `${BASE_PATH}/movie/${id}/videos?api_key=${API_KEY}&language=ko-KR`
-    )
+    await fetch(`${BASE_PATH}/movie/${id}/videos?&language=ko-KR`, options)
   ).json();
 
   return data.results;
